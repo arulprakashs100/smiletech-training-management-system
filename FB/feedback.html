@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Feedbacks | SmileTech</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Sticky Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-custom sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="fa-solid fa-graduation-cap me-2 text-primary-custom"></i>Smile<span>Tech</span>
+            </a>
+            <button class="navbar-toggler navbar-toggler-custom" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon navbar-toggler-icon-custom"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="courses.html">Courses</a></li>
+                    <li class="nav-item"><a class="nav-link" href="internships.html">Internships</a></li>
+                    <li class="nav-item"><a class="nav-link" href="project-domains.html">Project Domains</a></li>
+                    <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+                    <li class="nav-item"><a class="nav-link" href="feedback.html">Feedback</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                    <li class="nav-item ms-lg-3 mt-3 mt-lg-0">
+                        <a class="btn btn-primary-custom" href="application.html">Apply Now</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Inner Page Header -->
+    <header class="inner-header">
+        <div class="container">
+            <h1>Trainee Reviews & Suggestions</h1>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Feedback</li>
+                </ol>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Feedback Form & Testimonials -->
+    <section class="section-padding bg-light-custom">
+        <div class="container">
+            <div class="row g-5">
+                <!-- Left: Form -->
+                <div class="col-lg-5">
+                    <div class="glass-panel p-4 bg-white shadow-sm h-100">
+                        <h3 class="h4 text-dark-blue fw-bold mb-3"><i class="fa-solid fa-pen-to-square text-primary-custom me-2"></i>Submit Your Portal Review</h3>
+                        <p class="text-muted small">Help us improve. Submit your review and rate your mentoring experience with SmileTech.</p>
+
+                        <form id="feedback-form" onsubmit="handleFeedbackSubmit(event)">
+                            <div class="mb-3">
+                                <label class="form-label-custom">Full Name</label>
+                                <input type="text" class="form-control form-control-custom" id="feedback-name" required placeholder="Your full name">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label-custom">Email Address</label>
+                                <input type="email" class="form-control form-control-custom" id="feedback-email" required placeholder="name@domain.com">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label-custom">Mentoring Rating</label>
+                                <div class="rating-form-group">
+                                    <input type="radio" name="rating" id="star5" value="5" required><label for="star5" class="fa-solid fa-star"></label>
+                                    <input type="radio" name="rating" id="star4" value="4"><label for="star4" class="fa-solid fa-star"></label>
+                                    <input type="radio" name="rating" id="star3" value="3"><label for="star3" class="fa-solid fa-star"></label>
+                                    <input type="radio" name="rating" id="star2" value="2"><label for="star2" class="fa-solid fa-star"></label>
+                                    <input type="radio" name="rating" id="star1" value="1"><label for="star1" class="fa-solid fa-star"></label>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label-custom">Your Message / Feedback</label>
+                                <textarea class="form-control form-control-custom" id="feedback-message" rows="3" required placeholder="Describe your experience with our labs and mentors..."></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary-custom w-100">Submit Testimonial</button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Right: Active Feedback Cards -->
+                <div class="col-lg-7">
+                    <div class="p-4 glass-panel bg-white shadow-sm h-100">
+                        <h3 class="h4 text-dark-blue fw-bold mb-4"><i class="fa-solid fa-comments text-primary-custom me-2"></i>Live Portal Reviews</h3>
+                        <div class="row" id="feedback-list-container" style="max-height: 480px; overflow-y: auto; padding-right: 5px;">
+                            <!-- Populated dynamically via script.js -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer-custom">
+        <div class="container text-center text-md-start">
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <h5 class="mb-3"><i class="fa-solid fa-graduation-cap text-primary-custom me-2"></i>SmileTech</h5>
+                    <p class="small text-white-50">Empowering engineering and college students through industrial certified training, internships, final-year project mentoring, and technical workshops.</p>
+                </div>
+                <div class="col-md-2 ms-md-auto">
+                    <h5 class="mb-3">Quick Links</h5>
+                    <ul class="list-unstyled small">
+                        <li><a href="index.html" class="footer-link">Home</a></li>
+                        <li><a href="about.html" class="footer-link">About Us</a></li>
+                        <li><a href="courses.html" class="footer-link">Courses</a></li>
+                        <li><a href="internships.html" class="footer-link">Internships</a></li>
+                        <li><a href="gallery.html" class="footer-link">Gallery</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-2">
+                    <h5 class="mb-3">Access Desk</h5>
+                    <ul class="list-unstyled small">
+                        <li><a href="login.html" class="footer-link">Student Login</a></li>
+                        <li><a href="register.html" class="footer-link">Portal Registration</a></li>
+                        <li><a href="application.html" class="footer-link">Apply Placement</a></li>
+                        <li><a href="feedback.html" class="footer-link font-weight-bold text-info">Trainee Reviews</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5 class="mb-3">Accreditations</h5>
+                    <p class="small mb-1 text-white-50"><i class="fa-solid fa-circle-check text-primary-custom me-1"></i> ISO 9001:2015 Certified</p>
+                    <p class="small mb-1 text-white-50"><i class="fa-solid fa-circle-check text-primary-custom me-1"></i> MSME Registered (India)</p>
+                    <p class="small text-white-50"><i class="fa-solid fa-circle-check text-primary-custom me-1"></i> Skill Prototyping Partner</p>
+                </div>
+            </div>
+            <hr class="my-4" style="background-color: rgba(255,255,255,0.1)">
+            <div class="row align-items-center">
+                <div class="col-md-6 text-center text-md-start small text-white-50">
+                    © 2026 SmileTech Training & Project Management System. All rights reserved.
+                </div>
+                <div class="col-md-6 text-center text-md-end mt-3 mt-md-0">
+                    <div class="d-flex justify-content-center justify-content-md-end gap-2">
+                        <a href="https://facebook.com/smiletech" class="footer-social-link"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="https://twitter.com/smiletech" class="footer-social-link"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="https://linkedin.com/company/smiletech" class="footer-social-link"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="https://instagram.com/smiletech" class="footer-social-link"><i class="fa-brands fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 Bundle JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom script -->
+    <script src="js/script.js"></script>
+</body>
+</html>

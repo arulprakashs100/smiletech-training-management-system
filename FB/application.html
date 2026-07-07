@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apply Online | SmileTech</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Sticky Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-custom sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="fa-solid fa-graduation-cap me-2 text-primary-custom"></i>Smile<span>Tech</span>
+            </a>
+            <button class="navbar-toggler navbar-toggler-custom" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon navbar-toggler-icon-custom"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="courses.html">Courses</a></li>
+                    <li class="nav-item"><a class="nav-link" href="internships.html">Internships</a></li>
+                    <li class="nav-item"><a class="nav-link" href="project-domains.html">Project Domains</a></li>
+                    <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+                    <li class="nav-item"><a class="nav-link" href="feedback.html">Feedback</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                    <li class="nav-item ms-lg-3 mt-3 mt-lg-0">
+                        <a class="btn btn-primary-custom" href="application.html">Apply Now</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Inner Page Header -->
+    <header class="inner-header">
+        <div class="container">
+            <h1>Student Application Form</h1>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Apply Online</li>
+                </ol>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Application Form Section -->
+    <section class="section-padding bg-light-custom">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="glass-panel p-4 p-md-5 bg-white shadow">
+                        <div class="text-center mb-5">
+                            <h2 class="h3 text-dark-blue fw-bold">Trainee Placement Registration</h2>
+                            <p class="text-muted">Fill out the academic details accurately. Validations are enforced in JavaScript.</p>
+                        </div>
+
+                        <!-- Client validation alerts container -->
+                        <div id="app-validation-alert" class="alert d-none py-2 px-3 small my-3"></div>
+
+                        <form id="application-form" onsubmit="validateApplicationForm(event)">
+                            
+                            <!-- Personal Info -->
+                            <h3 class="h6 text-primary-custom border-bottom pb-2 mb-3"><i class="fa-solid fa-user me-2"></i>1. Personal Information</h3>
+                            <div class="row g-3 mb-4">
+                                <div class="col-md-6">
+                                    <label class="form-label-custom">Student Full Name</label>
+                                    <input type="text" class="form-control form-control-custom" id="app-name" required placeholder="Name according to records">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label-custom">Email Address</label>
+                                    <input type="email" class="form-control form-control-custom" id="app-email" required placeholder="name@college.edu">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label-custom">Mobile Number</label>
+                                    <input type="tel" class="form-control form-control-custom" id="app-phone" required placeholder="10-digit number">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label-custom">WhatsApp Number</label>
+                                    <input type="tel" class="form-control form-control-custom" id="app-whatsapp" required placeholder="WhatsApp active number">
+                                </div>
+                            </div>
+
+                            <!-- Academic Info -->
+                            <h3 class="h6 text-primary-custom border-bottom pb-2 mb-3"><i class="fa-solid fa-graduation-cap me-2"></i>2. Academic Details</h3>
+                            <div class="row g-3 mb-4">
+                                <div class="col-md-6">
+                                    <label class="form-label-custom">College Name</label>
+                                    <input type="text" class="form-control form-control-custom" id="app-college" required placeholder="Full college / institution name">
+                                </div>
+                                <div class="col-md-3">
+                                    <label class="form-label-custom">Department</label>
+                                    <input type="text" class="form-control form-control-custom" id="app-dept" required placeholder="e.g. CSE, ECE, IT">
+                                </div>
+                                <div class="col-md-3">
+                                    <label class="form-label-custom">Year of Study</label>
+                                    <select class="form-select form-control-custom" id="app-year" required>
+                                        <option value="" disabled selected>Select Year</option>
+                                        <option value="1st Year">1st Year</option>
+                                        <option value="2nd Year">2nd Year</option>
+                                        <option value="3rd Year">3rd Year</option>
+                                        <option value="4th Year">4th Year</option>
+                                        <option value="PG / Other">PG / Other</option>
+                                    </select>
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label-custom">Contact Address</label>
+                                    <textarea class="form-control form-control-custom" id="app-address" rows="2" required placeholder="Permanent mailing address"></textarea>
+                                </div>
+                            </div>
+
+                            <!-- Program Selection -->
+                            <h3 class="h6 text-primary-custom border-bottom pb-2 mb-3"><i class="fa-solid fa-book-open me-2"></i>3. Program & Team Configuration</h3>
+                            <div class="row g-3 mb-5">
+                                <div class="col-md-4">
+                                    <label class="form-label-custom">Selected Course / Placement Target</label>
+                                    <select class="form-select form-control-custom" id="app-selected-course" required>
+                                        <option value="" disabled selected>Choose Course</option>
+                                        <option value="Java Full Stack">Java Full Stack (Course)</option>
+                                        <option value="Python Full Stack">Python Full Stack (Course)</option>
+                                        <option value="HTML">HTML (Course)</option>
+                                        <option value="CSS">CSS (Course)</option>
+                                        <option value="JavaScript">JavaScript (Course)</option>
+                                        <option value="Bootstrap">Bootstrap (Course)</option>
+                                        <option value="React.js">React.js (Course)</option>
+                                        <option value="C Programming">C Programming (Course)</option>
+                                        <option value="C++">C++ (Course)</option>
+                                        <option value="Embedded C">Embedded C (Course)</option>
+                                        <option value="SQL">SQL (Course)</option>
+                                        <option value="Java Internship">Java Internship</option>
+                                        <option value="Python Internship">Python Internship</option>
+                                        <option value="Web Development Internship">Web Development Internship</option>
+                                        <option value="AI Internship">AI Internship</option>
+                                        <option value="IoT Internship">IoT Internship</option>
+                                        <option value="Cloud Internship">Cloud Internship</option>
+                                        <option value="Not Applicable">Not Applicable</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label-custom">Selected Project Domain</label>
+                                    <select class="form-select form-control-custom" id="app-selected-domain" required>
+                                        <option value="" disabled selected>Choose Domain</option>
+                                        <option value="Machine Learning">Machine Learning</option>
+                                        <option value="Deep Learning">Deep Learning</option>
+                                        <option value="Artificial Intelligence">Artificial Intelligence</option>
+                                        <option value="Robotics">Robotics</option>
+                                        <option value="Cloud Computing">Cloud Computing</option>
+                                        <option value="Internet of Things">Internet of Things</option>
+                                        <option value="Embedded Systems">Embedded Systems</option>
+                                        <option value="Image Processing">Image Processing</option>
+                                        <option value="PHP">PHP</option>
+                                        <option value="React.js">React.js</option>
+                                        <option value="Java">Java</option>
+                                        <option value="Python">Python</option>
+                                        <option value="Web Technology">Web Technology</option>
+                                        <option value="Power Electronics">Power Electronics</option>
+                                        <option value="Not Applicable">Not Applicable</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label-custom">Team Size (Allowed: 2, 4, or 6 only)</label>
+                                    <select class="form-select form-control-custom" id="app-teamsize" required>
+                                        <option value="" disabled selected>Select Team Size</option>
+                                        <option value="2">2 Members</option>
+                                        <option value="4">4 Members</option>
+                                        <option value="6">6 Members</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <!-- Buttons -->
+                            <div class="row g-3">
+                                <div class="col-sm-6">
+                                    <button type="reset" class="btn btn-secondary-custom btn-outline-primary-custom w-100 py-2.5" style="border-color: var(--primary); color: var(--primary) !important;">Reset Form</button>
+                                </div>
+                                <div class="col-sm-6">
+                                    <button type="submit" class="btn btn-primary-custom w-100 py-2.5">Submit Application</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer-custom">
+        <div class="container text-center text-md-start">
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <h5 class="mb-3"><i class="fa-solid fa-graduation-cap text-primary-custom me-2"></i>SmileTech</h5>
+                    <p class="small text-white-50">Empowering engineering and college students through industrial certified training, internships, final-year project mentoring, and technical workshops.</p>
+                </div>
+                <div class="col-md-2 ms-md-auto">
+                    <h5 class="mb-3">Quick Links</h5>
+                    <ul class="list-unstyled small">
+                        <li><a href="index.html" class="footer-link">Home</a></li>
+                        <li><a href="about.html" class="footer-link">About Us</a></li>
+                        <li><a href="courses.html" class="footer-link">Courses</a></li>
+                        <li><a href="internships.html" class="footer-link">Internships</a></li>
+                        <li><a href="gallery.html" class="footer-link">Gallery</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-2">
+                    <h5 class="mb-3">Access Desk</h5>
+                    <ul class="list-unstyled small">
+                        <li><a href="login.html" class="footer-link">Student Login</a></li>
+                        <li><a href="register.html" class="footer-link">Portal Registration</a></li>
+                        <li><a href="application.html" class="footer-link">Apply Placement</a></li>
+                        <li><a href="feedback.html" class="footer-link font-weight-bold text-info">Trainee Reviews</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5 class="mb-3">Accreditations</h5>
+                    <p class="small mb-1 text-white-50"><i class="fa-solid fa-circle-check text-primary-custom me-1"></i> ISO 9001:2015 Certified</p>
+                    <p class="small mb-1 text-white-50"><i class="fa-solid fa-circle-check text-primary-custom me-1"></i> MSME Registered (India)</p>
+                    <p class="small text-white-50"><i class="fa-solid fa-circle-check text-primary-custom me-1"></i> Skill Prototyping Partner</p>
+                </div>
+            </div>
+            <hr class="my-4" style="background-color: rgba(255,255,255,0.1)">
+            <div class="row align-items-center">
+                <div class="col-md-6 text-center text-md-start small text-white-50">
+                    © 2026 SmileTech Training & Project Management System. All rights reserved.
+                </div>
+                <div class="col-md-6 text-center text-md-end mt-3 mt-md-0">
+                    <div class="d-flex justify-content-center justify-content-md-end gap-2">
+                        <a href="https://facebook.com/smiletech" class="footer-social-link"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="https://twitter.com/smiletech" class="footer-social-link"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="https://linkedin.com/company/smiletech" class="footer-social-link"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="https://instagram.com/smiletech" class="footer-social-link"><i class="fa-brands fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 Bundle JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom script -->
+    <script src="js/script.js"></script>
+</body>
+</html>

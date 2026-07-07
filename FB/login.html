@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure Portal Access | SmileTech</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="auth-container">
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-5">
+                <div class="glass-panel p-4 p-md-5 bg-white shadow rounded-4">
+                    <div class="text-center mb-4">
+                        <a href="index.html" class="h3 fw-bold text-dark-blue mb-1 d-inline-block">
+                            <i class="fa-solid fa-graduation-cap text-primary-custom me-2"></i>Smile<span class="text-primary-custom">Tech</span>
+                        </a>
+                        <p class="text-muted small">Access trainee modules & stats</p>
+                    </div>
+
+                    <!-- Validation error alert -->
+                    <div id="login-validation-alert" class="alert d-none py-2 px-3 small mb-3"></div>
+
+                    <form id="login-form" onsubmit="validateLoginForm(event)">
+                        <div class="mb-3">
+                            <label class="form-label-custom">Select Access Role</label>
+                            <select class="form-select form-control-custom w-100" id="login-role" required>
+                                <option value="" disabled selected>Select Role</option>
+                                <option value="user">User / Student</option>
+                                <option value="admin">Administrator</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label-custom">Email Address</label>
+                            <input type="email" class="form-control form-control-custom w-100" id="login-email" required placeholder="ramesh@gmail.com or admin@smiletech.com">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label-custom">Password</label>
+                            <input type="password" class="form-control form-control-custom w-100" id="login-password" required placeholder="user123 or admin123">
+                        </div>
+                        <button type="submit" class="btn btn-primary-custom w-100 py-2.5 mb-3">Access Account</button>
+                    </form>
+
+                    <div class="text-center mt-3">
+                        <span class="small text-muted">Don't have an account? <a href="register.html" class="text-primary-custom fw-semibold">Register Portal</a></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5 Bundle JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom script -->
+    <script src="js/script.js"></script>
+</body>
+</html>

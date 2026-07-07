@@ -1,0 +1,18 @@
+# IntelliJ IDEA / VS Code / Eclipse configurations
+.idea/
+*.iml
+.classpath
+.project
+.settings/
+.vscode/
+
+# Maven build targets & compilations
+target/
+bin/
+out/
+*.class
+
+# Log and system files
+*.log
+.DS_Store
+Thumbs.db

@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | SmileTech</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <!-- Custom Admin CSS -->
+    <link rel="stylesheet" href="css/admin-style.css">
+</head>
+<body>
+
+    <!-- ==================================================== -->
+    <!-- LEFT SIDEBAR -->
+    <!-- ==================================================== -->
+    <aside class="admin-sidebar" id="admin-sidebar">
+        <div class="sidebar-logo">
+            <a href="index.html">
+                <i class="fa-solid fa-graduation-cap me-2 text-primary"></i>Smile<span>Tech</span>
+            </a>
+        </div>
+        
+        <ul class="admin-sidebar-menu">
+            <li>
+                <a class="admin-sidebar-link active" data-section="sec-dashboard">
+                    <i class="fa-solid fa-gauge"></i>Dashboard
+                </a>
+            </li>
+            <li>
+                <a class="admin-sidebar-link" data-section="sec-students">
+                    <i class="fa-solid fa-user-graduate"></i>Students
+                </a>
+            </li>
+            <li>
+                <a class="admin-sidebar-link" data-section="sec-courses">
+                    <i class="fa-solid fa-book-open"></i>Courses
+                </a>
+            </li>
+            <li>
+                <a class="admin-sidebar-link" data-section="sec-domains">
+                    <i class="fa-solid fa-diagram-project"></i>Project Domains
+                </a>
+            </li>
+            <li>
+                <a class="admin-sidebar-link" data-section="sec-internships">
+                    <i class="fa-solid fa-briefcase"></i>Internships
+                </a>
+            </li>
+            <li>
+                <a class="admin-sidebar-link" data-section="sec-workshops">
+                    <i class="fa-solid fa-chalkboard-user"></i>Workshops
+                </a>
+            </li>
+            <li>
+                <a class="admin-sidebar-link" data-section="sec-webinars">
+                    <i class="fa-solid fa-video"></i>Webinars
+                </a>
+            </li>
+            <li>
+                <a class="admin-sidebar-link" data-section="sec-training">
+                    <i class="fa-solid fa-laptop-code"></i>Training
+                </a>
+            </li>
+            <li>
+                <a class="admin-sidebar-link" data-section="sec-gallery">
+                    <i class="fa-solid fa-images"></i>Gallery
+                </a>
+            </li>
+            <li>
+                <a class="admin-sidebar-link" data-section="sec-feedback">
+                    <i class="fa-solid fa-comments"></i>Feedback
+                </a>
+            </li>
+            <li>
+                <a class="admin-sidebar-link" data-section="sec-company">
+                    <i class="fa-solid fa-building"></i>Company Details
+                </a>
+            </li>
+            <li>
+                <a class="admin-sidebar-link" data-section="sec-profile">
+                    <i class="fa-solid fa-user-gear"></i>Admin Profile
+                </a>
+            </li>
+            <li class="mt-4 pt-3 border-top border-secondary border-opacity-10">
+                <a class="admin-sidebar-link logout-link" onclick="handleAdminLogout()">
+                    <i class="fa-solid fa-right-from-bracket"></i>Logout
+                </a>
+            </li>
+        </ul>
+    </aside>
+
+    <!-- ==================================================== -->
+    <!-- MAIN WORKSPACE -->
+    <!-- ==================================================== -->
+    <div class="admin-main-wrapper">
+        
+        <!-- Top Navbar -->
+        <nav class="admin-navbar">
+            <div class="navbar-left">
+                <button class="sidebar-toggle-btn" id="sidebar-toggle">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+                <h1 class="h5 fw-bold mb-0 text-dark-blue" id="navbar-page-title">Dashboard</h1>
+            </div>
+
+            <div class="navbar-search">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" placeholder="Search database records...">
+            </div>
+
+            <div class="navbar-right">
+                <div class="notification-bell">
+                    <i class="fa-solid fa-bell"></i>
+                    <span class="badge"></span>
+                </div>
+                
+                <div class="admin-profile-pill" onclick="document.querySelector('[data-section=sec-profile]').click()">
+                    <img src="https://placehold.co/100/0f172a/3b82f6?text=Admin" alt="Admin Avatar" class="admin-profile-img">
+                    <span class="fw-bold text-dark-blue small d-none d-sm-inline" id="nav-admin-name">Admin Director</span>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Body Area -->
+        <main class="admin-body">
+
+            <!-- ========================================== -->
+            <!-- SECTION 1: DASHBOARD STATS & OVERVIEW -->
+            <!-- ========================================== -->
+            <section id="sec-dashboard" class="admin-section active">
+                <!-- Statistics cards grid -->
+                <div class="row g-4 mb-5">
+                    <div class="col-xl-4 col-sm-6">
+                        <div class="admin-stat-card">
+                            <div class="stat-card-details">
+                                <h3 id="stat-students">0</h3>
+                                <p>Students</p>
+                            </div>
+                            <div class="stat-card-icon"><i class="fa-solid fa-user-graduate"></i></div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-sm-6">
+                        <div class="admin-stat-card">
+                            <div class="stat-card-details">
+                                <h3 id="stat-courses">0</h3>
+                                <p>Courses</p>
+                            </div>
+                            <div class="stat-card-icon"><i class="fa-solid fa-book-open"></i></div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-sm-6">
+                        <div class="admin-stat-card">
+                            <div class="stat-card-details">
+                                <h3 id="stat-domains">0</h3>
+                                <p>Domains</p>
+                            </div>
+                            <div class="stat-card-icon"><i class="fa-solid fa-diagram-project"></i></div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-sm-6">
+                        <div class="admin-stat-card">
+                            <div class="stat-card-details">
+                                <h3 id="stat-internships">0</h3>
+                                <p>Internships</p>
+                            </div>
+                            <div class="stat-card-icon"><i class="fa-solid fa-briefcase"></i></div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-sm-6">
+                        <div class="admin-stat-card">
+                            <div class="stat-card-details">
+                                <h3 id="stat-workshops">0</h3>
+                                <p>Workshops</p>
+                            </div>
+                            <div class="stat-card-icon"><i class="fa-solid fa-chalkboard-user"></i></div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-sm-6">
+                        <div class="admin-stat-card">
+                            <div class="stat-card-details">
+                                <h3 id="stat-webinars">0</h3>
+                                <p>Webinars</p>
+                            </div>
+                            <div class="stat-card-icon"><i class="fa-solid fa-video"></i></div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-sm-6">
+                        <div class="admin-stat-card">
+                            <div class="stat-card-details">
+                                <h3 id="stat-training">0</h3>
+                                <p>Training Stacks</p>
+                            </div>
+                            <div class="stat-card-icon"><i class="fa-solid fa-laptop-code"></i></div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-sm-6">
+                        <div class="admin-stat-card">
+                            <div class="stat-card-details">
+                                <h3 id="stat-projects">0</h3>
+                                <p>Project Apps</p>
+                            </div>
+                            <div class="stat-card-icon"><i class="fa-solid fa-gears"></i></div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-sm-6">
+                        <div class="admin-stat-card">
+                            <div class="stat-card-details">
+                                <h3 id="stat-feedback">0</h3>
+                                <p>Feedbacks</p>
+                            </div>
+                            <div class="stat-card-icon"><i class="fa-solid fa-comments"></i></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent applications -->
+                <div class="card p-4 border rounded-4 shadow-sm mb-4 bg-white">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h2 class="h5 fw-bold mb-0 text-dark-blue"><i class="fa-solid fa-clock-rotate-left me-2 text-primary"></i>Recent Student Applications</h2>
+                        <button class="btn btn-sm btn-outline-primary" onclick="document.querySelector('[data-section=sec-students]').click()">View All</button>
+                    </div>
+                    <div class="table-responsive table-custom-wrapper">
+                        <table class="table table-custom text-center align-middle">
+                            <thead>
+                                <tr>
+                                    <th>Student Name</th>
+                                    <th>College Name</th>
+                                    <th>Selected Target</th>
+                                    <th>Project Domain</th>
+                                    <th>Team Size</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="students-table-body">
+                                <!-- Populated dynamically -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ========================================== -->
+            <!-- SECTION 2: STUDENTS MANAGEMENT -->
+            <!-- ========================================== -->
+            <section id="sec-students" class="admin-section">
+                <div class="card p-4 border rounded-4 shadow-sm bg-white">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h2 class="h5 fw-bold mb-0 text-dark-blue"><i class="fa-solid fa-user-graduate me-2 text-primary"></i>Trainee Placements Database</h2>
+                    </div>
+                    <div class="table-responsive table-custom-wrapper">
+                        <table class="table table-custom text-center align-middle">
+                            <thead>
+                                <tr>
+                                    <th>Student Name</th>
+                                    <th>College Name</th>
+                                    <th>Selected Target</th>
+                                    <th>Project Domain</th>
+                                    <th>Team Size</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="students-full-table-body">
+                                <!-- Re-uses/synced with students list -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ========================================== -->
+            <!-- SECTION 3: COURSES MANAGEMENT -->
+            <!-- ========================================== -->
+            <section id="sec-courses" class="admin-section">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h2 class="h5 fw-bold text-dark-blue mb-0"><i class="fa-solid fa-book-open text-primary me-2"></i>Courses Catalog</h2>
+                    <button class="btn btn-primary" onclick="addCourse()"><i class="fa-solid fa-plus me-2"></i>Add Course</button>
+                </div>
+                <div class="row g-4" id="courses-grid-container">
+                    <!-- Populated dynamically via script -->
+                </div>
+            </section>
+
+            <!-- ========================================== -->
+            <!-- SECTION 4: PROJECT DOMAINS -->
+            <!-- ========================================== -->
+            <section id="sec-domains" class="admin-section">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h2 class="h5 fw-bold text-dark-blue mb-0">Project Domain Categories</h2>
+                    <button class="btn btn-primary" onclick="addDomain()"><i class="fa-solid fa-plus me-2"></i>Add Domain</button>
+                </div>
+                <div class="row g-3" id="domains-grid-container">
+                    <!-- Populated dynamically -->
+                </div>
+            </section>
+
+            <!-- ========================================== -->
+            <!-- SECTION 5: INTERNSHIPS -->
+            <!-- ========================================== -->
+            <section id="sec-internships" class="admin-section">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h2 class="h5 fw-bold text-dark-blue mb-0"><i class="fa-solid fa-briefcase text-primary me-2"></i>Internships Catalog</h2>
+                    <button class="btn btn-primary" onclick="addInternship()"><i class="fa-solid fa-plus me-2"></i>Add Internship</button>
+                </div>
+                <div class="row g-4" id="internship-grid-container">
+                    <!-- Populated dynamically -->
+                </div>
+            </section>
+
+            <!-- ========================================== -->
+            <!-- SECTION 6: WORKSHOPS -->
+            <!-- ========================================== -->
+            <section id="sec-workshops" class="admin-section">
+                <div class="card p-4 border rounded-4 bg-white shadow-sm">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h2 class="h5 fw-bold text-dark-blue mb-0"><i class="fa-solid fa-chalkboard-user text-primary me-2"></i>Workshops Scheduling</h2>
+                        <button class="btn btn-primary btn-sm" onclick="addWorkshop()"><i class="fa-solid fa-plus me-1"></i>Add Workshop</button>
+                    </div>
+                    <div class="table-responsive table-custom-wrapper">
+                        <table class="table table-custom text-center align-middle">
+                            <thead>
+                                <tr>
+                                    <th>Workshop Name</th>
+                                    <th>Trainer Name</th>
+                                    <th>Scheduled Date</th>
+                                    <th>Seats Intake</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="workshops-table-body">
+                                <!-- Populated dynamically -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ========================================== -->
+            <!-- SECTION 7: WEBINARS -->
+            <!-- ========================================== -->
+            <section id="sec-webinars" class="admin-section">
+                <div class="card p-4 border rounded-4 bg-white shadow-sm">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h2 class="h5 fw-bold text-dark-blue mb-0"><i class="fa-solid fa-video text-primary me-2"></i>Webinars Portal</h2>
+                        <button class="btn btn-primary btn-sm" onclick="addWebinar()"><i class="fa-solid fa-plus me-1"></i>Add Webinar</button>
+                    </div>
+                    <div class="table-responsive table-custom-wrapper">
+                        <table class="table table-custom text-center align-middle">
+                            <thead>
+                                <tr>
+                                    <th>Webinar Topic</th>
+                                    <th>Invited Speaker</th>
+                                    <th>Scheduled Date</th>
+                                    <th>Timings</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="webinars-table-body">
+                                <!-- Populated dynamically -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ========================================== -->
+            <!-- SECTION 8: TRAINING PROGRAMS -->
+            <!-- ========================================== -->
+            <section id="sec-training" class="admin-section">
+                <div class="card p-4 border rounded-4 bg-white shadow-sm">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h2 class="h5 fw-bold text-dark-blue mb-0"><i class="fa-solid fa-laptop-code text-primary me-2"></i>Corporate Stacks Training</h2>
+                        <button class="btn btn-primary btn-sm" onclick="addTraining()"><i class="fa-solid fa-plus me-1"></i>Add Training</button>
+                    </div>
+                    <div class="table-responsive table-custom-wrapper">
+                        <table class="table table-custom text-center align-middle">
+                            <thead>
+                                <tr>
+                                    <th>Program Name</th>
+                                    <th>Duration</th>
+                                    <th>Lead Mentor</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="training-table-body">
+                                <!-- Populated dynamically -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ========================================== -->
+            <!-- SECTION 9: GALLERY MANAGEMENT -->
+            <!-- ========================================== -->
+            <section id="sec-gallery" class="admin-section">
+                <div class="card p-4 border rounded-4 bg-white shadow-sm mb-4">
+                    <h3 class="h5 fw-bold text-dark-blue mb-3">Upload Company Graphic Assets</h3>
+                    <form onsubmit="handleGalleryUpload(event)" class="row align-items-end g-3">
+                        <div class="col-md-8">
+                            <label class="admin-form-label">Choose SVG Vector / Screenshot File</label>
+                            <input type="file" class="form-control admin-form-control" accept="image/*" required>
+                        </div>
+                        <div class="col-md-4">
+                            <button type="submit" class="btn btn-primary w-100 py-2"><i class="fa-solid fa-cloud-arrow-up me-2"></i>Upload Image</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="row g-4" id="gallery-grid-container">
+                    <!-- Populated dynamically -->
+                </div>
+            </section>
+
+            <!-- ========================================== -->
+            <!-- SECTION 10: FEEDBACK MANAGEMENT -->
+            <!-- ========================================== -->
+            <section id="sec-feedback" class="admin-section">
+                <div class="card p-4 border rounded-4 bg-white shadow-sm">
+                    <h2 class="h5 fw-bold text-dark-blue mb-4"><i class="fa-solid fa-comments text-primary me-2"></i>Trainee Feedbacks moderation</h2>
+                    <div class="table-responsive table-custom-wrapper">
+                        <table class="table table-custom text-center align-middle">
+                            <thead>
+                                <tr>
+                                    <th>Student Name</th>
+                                    <th>Rating Star</th>
+                                    <th>Feedback Comments</th>
+                                    <th>Submitted Date</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="feedback-table-body">
+                                <!-- Populated dynamically -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ========================================== -->
+            <!-- SECTION 11: COMPANY DETAILS -->
+            <!-- ========================================== -->
+            <section id="sec-company" class="admin-section">
+                <div class="card p-4 p-md-5 border rounded-4 bg-white shadow-sm">
+                    <h2 class="h5 fw-bold text-dark-blue mb-4"><i class="fa-solid fa-building text-primary me-2"></i>Company Information Profile</h2>
+                    <form onsubmit="saveCompanyDetails(event)">
+                        <div class="row g-3 mb-4">
+                            <div class="col-md-6">
+                                <label class="admin-form-label">Company Name</label>
+                                <input type="text" class="form-control admin-form-control" id="company-name" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="admin-form-label">Corporate Email</label>
+                                <input type="email" class="form-control admin-form-control" id="company-email" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="admin-form-label">Contact Support Phone</label>
+                                <input type="text" class="form-control admin-form-control" id="company-phone" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="admin-form-label">Active Branch Networks</label>
+                                <input type="text" class="form-control admin-form-control" id="company-branches" required>
+                            </div>
+                            <div class="col-12">
+                                <label class="admin-form-label">Physical HQ Office Address</label>
+                                <input type="text" class="form-control admin-form-control" id="company-address" required>
+                            </div>
+                            <div class="col-12">
+                                <label class="admin-form-label">About Description Summary</label>
+                                <textarea class="form-control admin-form-control" id="company-about" rows="3" required></textarea>
+                            </div>
+                        </div>
+                        <div class="text-end">
+                            <button type="submit" class="btn btn-primary px-4 py-2"><i class="fa-solid fa-floppy-disk me-2"></i>Save Details</button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+
+            <!-- ========================================== -->
+            <!-- SECTION 12: ADMIN PROFILE -->
+            <!-- ========================================== -->
+            <section id="sec-profile" class="admin-section">
+                <div class="row g-4">
+                    <!-- Edit Details Card -->
+                    <div class="col-lg-6">
+                        <div class="card p-4 p-md-5 border rounded-4 bg-white shadow-sm h-100">
+                            <h2 class="h5 fw-bold text-dark-blue mb-4"><i class="fa-solid fa-user-gear text-primary me-2"></i>Admin Core Profile</h2>
+                            
+                            <div class="text-center mb-4">
+                                <img src="https://placehold.co/100/0f172a/3b82f6?text=Admin" alt="Admin Profile" class="img-thumbnail rounded-circle mb-3" style="width: 100px; height: 100px;">
+                                <h3 class="h6 mb-0 text-dark-blue fw-bold">System Super Administrator</h3>
+                                <span class="small text-muted font-monospace">Role: Administrator</span>
+                            </div>
+
+                            <form onsubmit="saveAdminProfile(event)">
+                                <div class="mb-3">
+                                    <label class="admin-form-label">Full Name</label>
+                                    <input type="text" class="form-control admin-form-control" id="profile-name" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="admin-form-label">Email Address</label>
+                                    <input type="email" class="form-control admin-form-control" id="profile-email" required>
+                                </div>
+                                <div class="mb-4">
+                                    <label class="admin-form-label">Phone Contact</label>
+                                    <input type="text" class="form-control admin-form-control" id="profile-phone" required>
+                                </div>
+                                <button type="submit" class="btn btn-primary w-100 py-2">Update Profile</button>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- Change Password Card -->
+                    <div class="col-lg-6">
+                        <div class="card p-4 p-md-5 border rounded-4 bg-white shadow-sm h-100">
+                            <h2 class="h5 fw-bold text-dark-blue mb-4"><i class="fa-solid fa-key text-primary me-2"></i>Change Admin Password</h2>
+                            <form id="pass-change-form" onsubmit="changeAdminPassword(event)">
+                                <div class="mb-3">
+                                    <label class="admin-form-label">Current Password</label>
+                                    <input type="password" class="form-control admin-form-control" id="pass-current" required placeholder="admin123">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="admin-form-label">New Password</label>
+                                    <input type="password" class="form-control admin-form-control" id="pass-new" required placeholder="Min 6 characters">
+                                </div>
+                                <div class="mb-4">
+                                    <label class="admin-form-label">Confirm New Password</label>
+                                    <input type="password" class="form-control admin-form-control" id="pass-confirm" required placeholder="Verify new password">
+                                </div>
+                                <button type="submit" class="btn btn-primary w-100 py-2">Update Password</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- Footer -->
+        <footer class="admin-footer">
+            © 2026 SmileTech Training & Project Management System<br>
+            All Rights Reserved.
+        </footer>
+
+    </div>
+
+    <!-- Bootstrap 5 Bundle JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Admin scripts controller -->
+    <script src="js/admin-script.js"></script>
+    
+    <!-- Unified student views handled by admin-script.js -->
+</body>
+</html>
